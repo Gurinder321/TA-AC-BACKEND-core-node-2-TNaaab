@@ -1,4 +1,9 @@
 console.log(__dirname);
 console.log(__filename);
 
-console.log(__dirname + '/server.js');
+const { Server } = require('http');
+const path = require('path');
+
+const serverPath = path.join(__dirname + 'server.js');
+
+console.log(serverPath);
