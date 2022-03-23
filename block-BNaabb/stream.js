@@ -3,12 +3,14 @@ const http = require('http');
 const server = http.createServer(handleRequest);
 
 function handleRequest(req, res) {
-    function handleRequest(req, res) {
-        if (req.method === 'POST' && req.url === '/') {
-          res.setHeader('Content-type', 'text/plain');
-          res.end('Gurinder');
-        }
-        res.write
+  let store = '';
+  req.on('data', (chunk) => {
+    store = store + chunk;
+  });
+  req.on('end', () => {
+    res.write(store);
+    res.end();
+  });
 }
 
 server.listen(3456);
